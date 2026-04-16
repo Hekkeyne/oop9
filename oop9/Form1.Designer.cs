@@ -34,9 +34,17 @@
             изменитьЗаписьCtrlBToolStripMenuItem = new ToolStripMenuItem();
             удалитьЗаписьCtrlCToolStripMenuItem = new ToolStripMenuItem();
             синхронизироватьCtrlDToolStripMenuItem = new ToolStripMenuItem();
+            открытьБдToolStripMenuItem = new ToolStripMenuItem();
+            создатьБдToolStripMenuItem = new ToolStripMenuItem();
             выходToolStripMenuItem = new ToolStripMenuItem();
             progressBar1 = new ProgressBar();
+            openFileDialog1 = new OpenFileDialog();
+            saveFileDialog1 = new SaveFileDialog();
+            dataGridView1 = new DataGridView();
+            panel1 = new Panel();
             menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // menuStrip1
@@ -50,7 +58,7 @@
             // 
             // опцииToolStripMenuItem
             // 
-            опцииToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { добавитьНовуюЗапитьCtrlAToolStripMenuItem, изменитьЗаписьCtrlBToolStripMenuItem, удалитьЗаписьCtrlCToolStripMenuItem, синхронизироватьCtrlDToolStripMenuItem });
+            опцииToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { добавитьНовуюЗапитьCtrlAToolStripMenuItem, изменитьЗаписьCtrlBToolStripMenuItem, удалитьЗаписьCtrlCToolStripMenuItem, синхронизироватьCtrlDToolStripMenuItem, открытьБдToolStripMenuItem, создатьБдToolStripMenuItem });
             опцииToolStripMenuItem.Name = "опцииToolStripMenuItem";
             опцииToolStripMenuItem.Size = new Size(56, 20);
             опцииToolStripMenuItem.Text = "Опции";
@@ -60,6 +68,7 @@
             добавитьНовуюЗапитьCtrlAToolStripMenuItem.Name = "добавитьНовуюЗапитьCtrlAToolStripMenuItem";
             добавитьНовуюЗапитьCtrlAToolStripMenuItem.Size = new Size(242, 22);
             добавитьНовуюЗапитьCtrlAToolStripMenuItem.Text = "Добавить новую запить Ctrl+A";
+            добавитьНовуюЗапитьCtrlAToolStripMenuItem.Click += добавитьНовуюЗапитьCtrlAToolStripMenuItem_Click;
             // 
             // изменитьЗаписьCtrlBToolStripMenuItem
             // 
@@ -79,6 +88,20 @@
             синхронизироватьCtrlDToolStripMenuItem.Size = new Size(242, 22);
             синхронизироватьCtrlDToolStripMenuItem.Text = "Синхронизировать Ctrl+D";
             // 
+            // открытьБдToolStripMenuItem
+            // 
+            открытьБдToolStripMenuItem.Name = "открытьБдToolStripMenuItem";
+            открытьБдToolStripMenuItem.Size = new Size(242, 22);
+            открытьБдToolStripMenuItem.Text = "Открыть бд";
+            открытьБдToolStripMenuItem.Click += открытьБдToolStripMenuItem_Click;
+            // 
+            // создатьБдToolStripMenuItem
+            // 
+            создатьБдToolStripMenuItem.Name = "создатьБдToolStripMenuItem";
+            создатьБдToolStripMenuItem.Size = new Size(242, 22);
+            создатьБдToolStripMenuItem.Text = "Создать бд";
+            создатьБдToolStripMenuItem.Click += создатьБдToolStripMenuItem_Click;
+            // 
             // выходToolStripMenuItem
             // 
             выходToolStripMenuItem.Name = "выходToolStripMenuItem";
@@ -88,25 +111,52 @@
             // 
             // progressBar1
             // 
-            progressBar1.Location = new Point(12, 415);
+            progressBar1.Dock = DockStyle.Bottom;
+            progressBar1.Location = new Point(0, 68);
             progressBar1.Name = "progressBar1";
-            progressBar1.Size = new Size(776, 23);
+            progressBar1.Size = new Size(800, 17);
             progressBar1.TabIndex = 1;
+            // 
+            // openFileDialog1
+            // 
+            openFileDialog1.FileName = "openFileDialog1";
+            // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 24);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersVisible = false;
+            dataGridView1.Size = new Size(800, 426);
+            dataGridView1.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(progressBar1);
+            panel1.Dock = DockStyle.Bottom;
+            panel1.Location = new Point(0, 365);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(800, 85);
+            panel1.TabIndex = 3;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(progressBar1);
+            Controls.Add(panel1);
+            Controls.Add(dataGridView1);
             Controls.Add(menuStrip1);
             KeyPreview = true;
             MainMenuStrip = menuStrip1;
             Name = "Form1";
-            Text = "Form1";
+            Text = "Рекдатор";
             KeyDown += Form1_KeyDown;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
+            panel1.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -121,5 +171,11 @@
         private ToolStripMenuItem синхронизироватьCtrlDToolStripMenuItem;
         private ToolStripMenuItem выходToolStripMenuItem;
         private ProgressBar progressBar1;
+        private OpenFileDialog openFileDialog1;
+        private SaveFileDialog saveFileDialog1;
+        private ToolStripMenuItem открытьБдToolStripMenuItem;
+        private ToolStripMenuItem создатьБдToolStripMenuItem;
+        private DataGridView dataGridView1;
+        private Panel panel1;
     }
 }
