@@ -13,6 +13,7 @@ namespace oop9
     public partial class Form2 : Form
     {
         public string filepatch2;
+        public event EventHandler updatedgw;
         public Form2(string filepatch)
         {
             InitializeComponent();
@@ -26,7 +27,7 @@ namespace oop9
             {
                 connection.Open();
                 var commands = connection.CreateCommand();
-                commands.CommandText = @"INSERT INTO oop9tbl (Surname, Name, FatherName, Phone) VALUES ($surname, $name, $fatherName, $phone)";
+                commands.CommandText = @"INSERT INTO oop9tbl (Фамилия, Имя, Отчество, Номер_телефона) VALUES ($surname, $name, $fatherName, $phone)";
                 commands.Parameters.AddWithValue("$surname",textBox1.Text);
                 commands.Parameters.AddWithValue("$name", textBox2.Text);
                 commands.Parameters.AddWithValue("$fatherName", textBox3.Text);
@@ -38,6 +39,7 @@ namespace oop9
                     textBox2.Clear();
                     textBox3.Clear();
                     textBox4.Clear();
+                    updatedgw?.Invoke(this, EventArgs.Empty);
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
             }

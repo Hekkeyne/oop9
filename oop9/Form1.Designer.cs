@@ -42,6 +42,7 @@
             saveFileDialog1 = new SaveFileDialog();
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
+            button1 = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
@@ -92,14 +93,14 @@
             // 
             открытьБдToolStripMenuItem.Name = "открытьБдToolStripMenuItem";
             открытьБдToolStripMenuItem.Size = new Size(242, 22);
-            открытьБдToolStripMenuItem.Text = "Открыть бд";
+            открытьБдToolStripMenuItem.Text = "Открыть бд Ctrl+E";
             открытьБдToolStripMenuItem.Click += открытьБдToolStripMenuItem_Click;
             // 
             // создатьБдToolStripMenuItem
             // 
             создатьБдToolStripMenuItem.Name = "создатьБдToolStripMenuItem";
             создатьБдToolStripMenuItem.Size = new Size(242, 22);
-            создатьБдToolStripMenuItem.Text = "Создать бд";
+            создатьБдToolStripMenuItem.Text = "Создать бд Ctrl+F";
             создатьБдToolStripMenuItem.Click += создатьБдToolStripMenuItem_Click;
             // 
             // выходToolStripMenuItem
@@ -123,6 +124,12 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.AllowUserToAddRows = false;
+            dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AllowUserToResizeColumns = false;
+            dataGridView1.AllowUserToResizeRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 24);
@@ -130,15 +137,29 @@
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(800, 426);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellValueChanged += saveedited;
             // 
             // panel1
             // 
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(progressBar1);
             panel1.Dock = DockStyle.Bottom;
             panel1.Location = new Point(0, 365);
             panel1.Name = "panel1";
             panel1.Size = new Size(800, 85);
             panel1.TabIndex = 3;
+            // 
+            // button1
+            // 
+            button1.AutoSize = true;
+            button1.Enabled = false;
+            button1.Location = new Point(512, 3);
+            button1.Name = "button1";
+            button1.Size = new Size(285, 59);
+            button1.TabIndex = 2;
+            button1.Text = "Сохранить изменения";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += save_edited_button;
             // 
             // Form1
             // 
@@ -157,6 +178,7 @@
             menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -177,5 +199,6 @@
         private ToolStripMenuItem создатьБдToolStripMenuItem;
         private DataGridView dataGridView1;
         private Panel panel1;
+        private Button button1;
     }
 }

@@ -20,10 +20,10 @@ namespace oop9
                 @"
                     CREATE TABLE IF NOT EXISTS oop9tbl (
                         Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Surname TEXT NOT NULL,
-                        Name TEXT NOT NULL,
-                        FatherName TEXT,
-                        Phone TEXT NOT NULL
+                        Фамилия TEXT NOT NULL,
+                        Имя TEXT NOT NULL,
+                        Отчество TEXT,
+                        Номер_телефона TEXT NOT NULL
                     );
                 ";
                 progressBar1.Value = 80;
@@ -33,7 +33,7 @@ namespace oop9
         }
         private void Form1_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.KeyCode)
+            switch (e.KeyData)
             {
                 case (Keys.Control | Keys.A):
                     break;
@@ -43,7 +43,12 @@ namespace oop9
                     break;
                 case (Keys.Control | Keys.D):
                     break;
-
+                case (Keys.Control | Keys.E):
+                    открытьБдToolStripMenuItem_Click(null, null);
+                    break;
+                case (Keys.Control | Keys.F):
+                    создатьБдToolStripMenuItem_Click(null, null);
+                    break;
             }
         }
         private void totable()
@@ -64,12 +69,14 @@ namespace oop9
         }
         private void выходToolStripMenuItem_Click(object sender, EventArgs e) => Close();
 
-        private void добавитьНовуюЗапитьCtrlAToolStripMenuItem_Click(object sender, EventArgs e) 
+        private void добавитьНовуюЗапитьCtrlAToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new Form2(filepatch).Show();
-            updtable();
+            Form2 f2 = new Form2(filepatch);
+            f2.updatedgw += updtable;
+            f2.Show();
+
         }
-        private void updtable()
+        private void updtable(object sender, EventArgs e)
         {
             string datab = $"Data Source = {filepatch}";
             using (var connection = new SqliteConnection(datab))
@@ -77,13 +84,13 @@ namespace oop9
                 connection.Open();
                 var command = connection.CreateCommand();
                 command.CommandText = @"SELECT * FROM oop9tbl";
-                using(var read = command.ExecuteReader())
+                using (var read = command.ExecuteReader())
                 {
                     var table = new System.Data.DataTable();
                     table.Load(read);
-                    dataGridView1.DataSource= table;
+                    dataGridView1.DataSource = table;
                 }
-            } 
+            }
         }
         private void создатьБдToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -96,13 +103,6 @@ namespace oop9
             var c = new SqliteConnection($"Data Source={filepatch}");
             c.Open();
             totable();
-            //var com = c.CreateCommand();
-            //com.CommandText = @"
-            //    INSERT INTO oop9tbl (Surname, Name, FatherName, Phone) VALUES
-            //    ('Smith', 'John', 'Doe', '123-456-7890'),
-            //    ('Johnson', 'Jane', 'Doe', '234-567-8901'),
-            //    ('Brown', 'Charlie', 'Doe', '345-678-9012');";
-            //com.ExecuteNonQuery();
             progressBar1.Visible = false;
         }
 
@@ -119,5 +119,19 @@ namespace oop9
             progressBar1.Visible = false;
         }
 
+        private void saveedited(object sender, DataGridViewCellEventArgs e)
+        {
+            button1.Enabled = true;
+        }
+
+        private void save_edited_button(object sender, EventArgs e)
+        {
+            using (var connection = new SqliteConnection($"Data Source = {filepatch}"))
+            {
+                connection.Open();
+                var commands = connection.CreateCommand();
+                commands.CommandText = @"";
+            }
+        }
     }
 }
