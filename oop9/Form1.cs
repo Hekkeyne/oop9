@@ -16,16 +16,7 @@ namespace oop9
             {
                 connection.Open();
                 var command = connection.CreateCommand();
-                command.CommandText =
-                @"
-                    CREATE TABLE IF NOT EXISTS oop9tbl (
-                        Id INTEGER PRIMARY KEY AUTOINCREMENT,
-                        Фамилия TEXT NOT NULL,
-                        Имя TEXT NOT NULL,
-                        Отчество TEXT,
-                        Номер_телефона TEXT NOT NULL
-                    );
-                ";
+                create(command);
                 progressBar1.Value = 80;
                 command.ExecuteNonQuery();
                 progressBar1.Value = 100;
@@ -76,6 +67,16 @@ namespace oop9
             f2.Show();
 
         }
+        private void create(SqliteCommand command)
+        {
+            command.CommandText = @"CREATE TABLE IF NOT EXISTS oop9tbl(Id INTEGER PRIMARY KEY AUTOINCREMENT,
+                        Фамилия TEXT NOT NULL,
+                        Имя TEXT NOT NULL,
+                        Отчество TEXT,
+                        Номер_телефона TEXT NOT NULL
+                    );";
+            command.ExecuteNonQuery();
+        }
         private void updtable(object sender, EventArgs e)
         {
             string datab = $"Data Source = {filepatch}";
@@ -83,6 +84,8 @@ namespace oop9
             {
                 connection.Open();
                 var command = connection.CreateCommand();
+                create(command);
+                command.ExecuteNonQuery();
                 command.CommandText = @"SELECT * FROM oop9tbl";
                 using (var read = command.ExecuteReader())
                 {
@@ -102,6 +105,7 @@ namespace oop9
             createsqlite();
             var c = new SqliteConnection($"Data Source={filepatch}");
             c.Open();
+            createsqlite();
             totable();
             progressBar1.Visible = false;
         }
@@ -115,6 +119,7 @@ namespace oop9
             progressBar1.Visible = true;
             var c = new SqliteConnection($"Data Source={filepatch}");
             c.Open();
+            createsqlite();
             totable();
             progressBar1.Visible = false;
         }
@@ -130,7 +135,10 @@ namespace oop9
             {
                 connection.Open();
                 var commands = connection.CreateCommand();
-                commands.CommandText = @"";
+                commands.CommandText = @"DROP Table oop9tbl";
+                commands.ExecuteNonQuery();
+                create(commands);
+                updtable(null,null);
             }
         }
     }
