@@ -191,17 +191,6 @@ namespace oop9
                 adap.Update(table);
             }
         }
-
-        private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
-        {
-
-        }
-
-        private void dataGridView1_ColumnAdded(object sender, DataGridViewColumnEventArgs e)
-        {
-
-        }
-
         private void dataGridView1_Click(object sender, EventArgs e)
         {
         }
