@@ -76,12 +76,14 @@
             изменитьЗаписьCtrlBToolStripMenuItem.Name = "изменитьЗаписьCtrlBToolStripMenuItem";
             изменитьЗаписьCtrlBToolStripMenuItem.Size = new Size(242, 22);
             изменитьЗаписьCtrlBToolStripMenuItem.Text = "Изменить запись Ctrl+B";
+            изменитьЗаписьCtrlBToolStripMenuItem.Click += изменитьЗаписьCtrlBToolStripMenuItem_Click;
             // 
             // удалитьЗаписьCtrlCToolStripMenuItem
             // 
             удалитьЗаписьCtrlCToolStripMenuItem.Name = "удалитьЗаписьCtrlCToolStripMenuItem";
             удалитьЗаписьCtrlCToolStripMenuItem.Size = new Size(242, 22);
             удалитьЗаписьCtrlCToolStripMenuItem.Text = "Удалить запись Ctrl+C";
+            удалитьЗаписьCtrlCToolStripMenuItem.Click += удалитьЗаписьCtrlCToolStripMenuItem_Click;
             // 
             // синхронизироватьCtrlDToolStripMenuItem
             // 
@@ -113,7 +115,7 @@
             // progressBar1
             // 
             progressBar1.Dock = DockStyle.Bottom;
-            progressBar1.Location = new Point(0, 68);
+            progressBar1.Location = new Point(0, 30);
             progressBar1.Name = "progressBar1";
             progressBar1.Size = new Size(800, 17);
             progressBar1.TabIndex = 1;
@@ -134,9 +136,11 @@
             dataGridView1.Dock = DockStyle.Fill;
             dataGridView1.Location = new Point(0, 24);
             dataGridView1.Name = "dataGridView1";
+            dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersVisible = false;
             dataGridView1.Size = new Size(800, 426);
             dataGridView1.TabIndex = 2;
+            dataGridView1.CellClick += dataGridView1_CellClick;
             dataGridView1.CellValueChanged += saveedited;
             // 
             // panel1
@@ -144,21 +148,23 @@
             panel1.Controls.Add(button1);
             panel1.Controls.Add(progressBar1);
             panel1.Dock = DockStyle.Bottom;
-            panel1.Location = new Point(0, 365);
+            panel1.Location = new Point(0, 403);
             panel1.Name = "panel1";
-            panel1.Size = new Size(800, 85);
+            panel1.Size = new Size(800, 47);
             panel1.TabIndex = 3;
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             button1.AutoSize = true;
             button1.Enabled = false;
-            button1.Location = new Point(512, 3);
+            button1.Location = new Point(515, 3);
             button1.Name = "button1";
-            button1.Size = new Size(285, 59);
+            button1.Size = new Size(285, 25);
             button1.TabIndex = 2;
             button1.Text = "Сохранить изменения";
             button1.UseVisualStyleBackColor = true;
+            button1.Visible = false;
             button1.Click += save_edited_button;
             // 
             // Form1
