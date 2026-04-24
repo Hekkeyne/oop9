@@ -51,7 +51,7 @@ namespace oop9
                     try
                     {
                         commands.ExecuteNonQuery();
-                        updatedgw?.Invoke(this, EventArgs.Empty);
+                        this.DialogResult= DialogResult.OK;
                         this.Close();
                     }
                     catch (Exception ex) { MessageBox.Show(ex.Message); }

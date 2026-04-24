@@ -43,6 +43,7 @@
             dataGridView1 = new DataGridView();
             panel1 = new Panel();
             button1 = new Button();
+            label1 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel1.SuspendLayout();
@@ -145,6 +146,7 @@
             // 
             // panel1
             // 
+            panel1.Controls.Add(label1);
             panel1.Controls.Add(button1);
             panel1.Controls.Add(progressBar1);
             panel1.Dock = DockStyle.Bottom;
@@ -166,6 +168,14 @@
             button1.UseVisualStyleBackColor = true;
             button1.Visible = false;
             button1.Click += save_edited_button;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(12, 8);
+            label1.Name = "label1";
+            label1.Size = new Size(0, 15);
+            label1.TabIndex = 3;
             // 
             // Form1
             // 
@@ -206,5 +216,6 @@
         private DataGridView dataGridView1;
         private Panel panel1;
         private Button button1;
+        private Label label1;
     }
 }

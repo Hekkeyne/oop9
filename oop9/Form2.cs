@@ -41,7 +41,7 @@ namespace oop9
                         textBox2.Clear();
                         textBox3.Clear();
                         textBox4.Clear();
-                        updatedgw?.Invoke(this, EventArgs.Empty);
+                        this.DialogResult = DialogResult.OK;
                     }
                     catch (Exception ex) { MessageBox.Show(ex.Message); }
                 }

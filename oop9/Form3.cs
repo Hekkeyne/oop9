@@ -18,7 +18,7 @@ namespace oop9
 
         private void button1_Click(object sender, EventArgs e)
         {
-            deleteroww?.Invoke(this, EventArgs.Empty);
+            this.DialogResult = DialogResult.OK;
             this.Close();
         }
 

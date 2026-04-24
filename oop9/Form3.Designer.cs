@@ -77,6 +77,7 @@
             MaximizeBox = false;
             MinimizeBox = false;
             Name = "Form3";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Form3";
             ResumeLayout(false);
             PerformLayout();
